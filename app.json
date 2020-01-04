@@ -1,0 +1,77 @@
+{
+  "id": "com.zoneluminance",
+  "sdk": 2,
+  "name": {
+    "en": "Zone luminance"
+  },
+  "description": {
+    "en": "This app allows you to make zone lumniance conditions"
+  },
+  "category": "lights",
+  "version": "0.0.1",
+  "compatibility": ">=2.0.5",
+  "author": {
+    "name": "Jurgen Heine",
+    "email": "jurgen2.heine@gmail.com"
+  },
+  "contributors": {
+    "developers": []
+  },
+  "bugs": {
+    "url": "https://github.com/jurgenheine/com.zoneluminance/issues"
+  },
+  "source": "https://github.com/jurgenheine/com.zoneluminance",
+  "homepage": "https://github.com/jurgenheine/com.zoneluminance/blob/master/README.md",
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.jpg",
+    "small": "/assets/images/small.jpg"
+  },
+  "flow": {
+    "conditions": [
+      {
+        "id": "dark_in",
+        "title": {
+          "en": "It's dark in..."
+        },
+        "args": [
+          {
+            "name": "zone",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Type something..."
+            }
+          },
+          {
+            "name": "type",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "min",
+                "label": {
+                  "en": "lowest"
+                }
+              },
+              {
+                "id": "avg",
+                "label": {
+                  "en": "Average"
+                }
+              },
+              {
+                "id": "max",
+                "label": {
+                  "en": "Highest"
+                }
+              }
+            ]
+          },
+          {
+            "name": "lux",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  }
+}
