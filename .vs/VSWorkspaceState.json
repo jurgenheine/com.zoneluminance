@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\assets\\images"
+    "\\locales"
   ],
-  "SelectedNode": "\\app.json",
+  "SelectedNode": "\\api.js",
   "PreviewInSolutionExplorer": false
 }

@@ -1,6 +1,9 @@
 {
   "id": "com.zoneluminance",
   "sdk": 2,
+  "permissions": [
+    "homey:manager:api"
+  ],
   "name": {
     "en": "Zone luminance"
   },
@@ -22,7 +25,6 @@
   },
   "source": "https://github.com/jurgenheine/com.zoneluminance",
   "homepage": "https://github.com/jurgenheine/com.zoneluminance/blob/master/README.md",
-  "permissions": [],
   "images": {
     "large": "/assets/images/large.jpg",
     "small": "/assets/images/small.jpg"
