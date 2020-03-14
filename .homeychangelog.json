@@ -4,5 +4,11 @@
   },
   "0.0.2": {
     "en": "Change icon"
+  },
+  "0.0.3": {
+    "en": "Zone luminance triggers"
+  },
+  "0.0.4": {
+    "en": "add trigger for lighter"
   }
 }
