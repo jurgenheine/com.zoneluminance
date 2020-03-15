@@ -51,7 +51,7 @@ class LumniApp extends Homey.App {
 
     async initAddOrRemoveDevices() {
         this.log('Add device add and remove event handlers');
-        var api = await this.getApi();
+        let api = await this.getApi();
         api.devices.on('device.create', async (id) => {
             this.log('New device found!');
             if (["measure_luminance"].includes(device.capabilities[cap])) {
@@ -63,7 +63,7 @@ class LumniApp extends Homey.App {
         });
 
         api.devices.on('device.delete', async (id) => {
-            var foundIndex = deviceValues.findIndex(x => x.id == id);
+            let foundIndex = deviceValues.findIndex(x => x.id == id);
             if (foundIndex > -1)
                 deviceValues.splice(foundIndex, 1);
         });
@@ -91,7 +91,7 @@ class LumniApp extends Homey.App {
 
     // Yolo function courtesy of Robert Klep ;)
     async waitForDevice(id, addCounter) {
-        var api = await this.getApi();
+        let api = await this.getApi();
         const device = await api.devices.getDevice({ id: id.id });
         if (device.ready) {
             return device;
@@ -115,7 +115,7 @@ class LumniApp extends Homey.App {
     }
 
     async setDeviceValues(device, luminance) {
-        var id = device.id;
+        let id = device.id;
         if (!this.deviceValues) {
             this.log('Create device array');
             this.deviceValues = [];
@@ -132,40 +132,38 @@ class LumniApp extends Homey.App {
 
     async stateChange(device, luminance) {
         this.log('Lumni event trigger for ' + device.name + ' zone ' + device.zone + ', value = ' + luminance);
-        var tokens = {};
+        let tokens = {};
         this.setDeviceValues(device, luminance);
-        var state = { 'zone': device.zone};
+        let state = { 'zone': device.zone};
         this.itsDarkTrigger.trigger(tokens, state);
     }
 
     async getDevices() {
-        var homeyAPI = await this.getApi();
+        let homeyAPI = await this.getApi();
         return await homeyAPI.devices.getDevices();
     }
 
     async getZones() {
-        var homeyAPI = await this.getApi();
+        let homeyAPI = await this.getApi();
         return await homeyAPI.zones.getZones();
     }
 
     async _onFlowActionGetLuminances(args) {
         let lux = args.lux;
-
-        var current = await this.getCurrentLuminance(args,true);
+        let current = await this.getCurrentLuminance(args, true);
+        this.log("current lux: " + current + ', thresshold lux: ' + lux);
         return current < lux;
     }
 
     async _onFlowActionTriggerDark(args,state) {
         let lux = args.lux;
-        var returnvalue = false;
         this.log("Trigger for zone : " + state.zone + ', current zone ' + args.zone.instanceId);
         if (state.zone != args.zone.instanceId) {
             this.log("No trigger needed for this zone");
             return false;
         }
-        var current = await this.getCurrentLuminance(args, false);
-        returnvalue = current < lux;
-        this.log("Current " + current + ", thresshold " + lux + 'is ' + returnvalue?"true":"false");
+        let current = await this.getCurrentLuminance(args, false);
+        this.log("current lux: " + current + ', thresshold lux: ' + lux);
         return current < lux;
     }
 
@@ -176,7 +174,8 @@ class LumniApp extends Homey.App {
             this.log("No trigger needed for this zone");
             return false;
         }
-        var current = await this.getCurrentLuminance(args, false);
+        let current = await this.getCurrentLuminance(args, false);
+        this.log("current lux: " + current + ', thresshold lux: ' + lux);
         return current >= lux;
     }
 
@@ -208,12 +207,12 @@ class LumniApp extends Homey.App {
 
     async getZoneLuminances(zoneid, freshValues) {
         this.log("Check for zone " + zoneid);
-        var zoneLuminances = [];
+        let zoneLuminances = [];
 
         if (freshValues) {
             let allDevices = await this.getDevices();
             for (let id in allDevices) {
-                var device = allDevices[id];
+                let device = allDevices[id];
                 this.log(device.name + " with zone " + device.zone);
                 if (device.zone === zoneid) {
                     this.log(device.name + " has correct zone");
@@ -225,7 +224,7 @@ class LumniApp extends Homey.App {
                 }
             }
         } else {
-            var values = this.deviceValues.filter(x => x.zone == zoneid);
+            let values = this.deviceValues.filter(x => x.zone == zoneid);
             for (let index in values) {
                 var value = values[index];
                 zoneLuminances.push(value.luminance);
