@@ -41,8 +41,8 @@ class LumniApp extends Homey.App {
             .registerRunListener(this._onFlowActionTriggerDark.bind(this))
             .getArgument('zone')
             .registerAutocompleteListener(this._onZoneAutoComplete.bind(this));
-        this.itsDarkTrigger = new Homey.FlowCardTrigger('its_light');
-        this.itsDarkTrigger
+        this.itsLightTrigger = new Homey.FlowCardTrigger('its_light');
+        this.itsLightTrigger
             .register()
             .registerRunListener(this._onFlowActionTriggerLight.bind(this))
             .getArgument('zone')
