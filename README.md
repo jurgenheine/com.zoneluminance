@@ -1,3 +1,6 @@
+# ${{\color{red}I\ am\ stopped\ with\ developping\ this\ app.\ I\ moved\ to\ Home\ Assistant.\}}$
+There is currently no new app developer yet. If somebody is making a PR, I will merge and publish it to the appstore.
+
 # Zone Luminance
 
 This app provides flow conditions where you can set desired luminance for a zone. It supports lowest, highest and average luminance for a zone.
